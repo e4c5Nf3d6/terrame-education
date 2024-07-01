@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useDispatch } from "react-redux";
 
 import { login } from "../features/user/userSlice";
@@ -13,7 +13,6 @@ export default function Login() {
     async function userLogin() {
         try {
             await dispatch(login({ "username": username, "password": password })).unwrap();
-            Alert.alert('Login');
         } catch(err) {
             Alert.alert("Error!")
         }

@@ -19,9 +19,13 @@ class Login(Resource):
         if user:
 
             if user.authenticate(password):
-                session['user_id'] = user.id
 
-                return make_response(user.to_dict(), 200)
+                token = user.set_user_token()
+
+                user_dict = user.to_dict()
+                user_dict['token'] = token
+
+                return make_response(user_dict, 200)
             
         return make_response({'error': '401 Unauthorized'}, 401)
     
