@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
 
-import Test from './components/Test';
+import Tabs from './components/Tabs';
 import Login from './pages/Login';
 
 import { selectUser } from './features/user/userSlice';
@@ -19,7 +19,7 @@ export default function RootLayout() {
                 {user.token == null ?
                     <Stack.Screen name="Login" component={Login} options={{ title: 'Log in', headerShown: false }} />
                     :  
-                    <Stack.Screen name="Test" component={Test} options={{ headerShown: false }} />
+                    <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
                 }
             </Stack.Navigator>
         </NavigationContainer>            
