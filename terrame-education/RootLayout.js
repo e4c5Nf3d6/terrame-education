@@ -12,15 +12,16 @@ const Stack = createStackNavigator();
 export default function RootLayout() {
     const user = useSelector(selectUser)
 
-    return (
+    return (        
         <NavigationContainer>
             <Stack.Navigator>
-                {user.token == null ?
+                {/* {user.token == null ?
                     <Stack.Screen name="Login" component={Login} options={{ title:"Log in", headerShown: false }} />
                     :  
                     <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
-                }
+                } */}
+                <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
             </Stack.Navigator>
-        </NavigationContainer>            
+        </NavigationContainer>           
     );
 }

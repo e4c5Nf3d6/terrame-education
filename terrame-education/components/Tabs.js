@@ -30,7 +30,7 @@ export default function Tabs() {
                     tabBarIcon: ({ color, focused }) => (
                         <TabBarIcon iconName={focused ? "home" : "home-outline"} color={color} />
                     ),
-                    headerTitle: () => <Header />
+                    headerShown: false
                 }} 
             />
             <Tab.Screen 

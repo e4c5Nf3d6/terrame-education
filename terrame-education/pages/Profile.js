@@ -1,11 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 
 export default function Profile() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Profile</Text>
-            <StatusBar style="auto" />
         </View>
     );
 }
@@ -13,7 +11,7 @@ export default function Profile() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#181A11',
+        backgroundColor: '#2a3312',
         alignItems: 'center',
         justifyContent: 'center',
     },

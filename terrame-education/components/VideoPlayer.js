@@ -1,13 +1,14 @@
 import * as React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { Video, ResizeMode } from "expo-av";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function VideoPlayer() {
 
     const video = React.useRef(null);
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={styles.text}>Video</Text>
             <Video
                 ref={video}
@@ -19,7 +20,7 @@ export default function VideoPlayer() {
                 resizeMode={ResizeMode.CONTAIN}
                 shouldPlay={false}
             />
-        </View>
+        </SafeAreaView>
     );
 }
 
@@ -31,10 +32,8 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        justifyContent: "center",
         alignItems: "center",
-        height: 400,
-        textAlign: "center"
+        backgroundColor: "2a3312"
     },
     video: {
         alignSelf: "center",

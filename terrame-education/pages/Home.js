@@ -1,13 +1,13 @@
-import { Image, StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import { Image, StyleSheet, Text, View } from 'react-native';
+
+import ParallaxScrollView from '../components/ParallaxScrollView';
 
 export default function Home() {
     return (
 
-        <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scrollView}>
+        <View style={styles.container}>
+            <ParallaxScrollView>
                 <View style={styles.container}>
-                    <StatusBar style="auto" />
                     
                     <View style={styles.titleContainer}>
                         <Text style={styles.subtitle}>Sons of Gondor, of Rohan, my brothers,</Text>
@@ -66,15 +66,15 @@ export default function Home() {
                         style={{margin: 20, width: 350, height: 200}}
                     />
                 </View>
-            </ScrollView>
-        </SafeAreaView>
+            </ParallaxScrollView>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#181A11',
+        backgroundColor: '#2a3312',
         alignItems: 'center',
         justifyContent: 'center',
     },
