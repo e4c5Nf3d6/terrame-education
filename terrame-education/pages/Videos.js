@@ -1,26 +1,71 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import { Dimensions, View, StyleSheet, Text } from 'react-native';
+
+import Animated, {
+	interpolate,
+	useAnimatedRef,
+	useAnimatedStyle,
+	useScrollViewOffset
+} from 'react-native-reanimated';
+
+import VideoPlayer from '../components/VideoPlayer';
+
+const { width } = Dimensions.get('window');
+const IMG_HEIGHT = 300;
+
+
 
 export default function Videos() {
+
+    const scrollRef = useAnimatedRef();
+	const scrollOffset = useScrollViewOffset(scrollRef);
+
+    const imageAnimatedStyle = useAnimatedStyle(() => {
+        return {
+            transform: [
+                {
+                    translateY: interpolate(
+                        scrollOffset.value,
+                        [-IMG_HEIGHT, 0, IMG_HEIGHT],
+                        [-IMG_HEIGHT / 2, 0, IMG_HEIGHT * 0.75]
+                    )
+                },
+                {
+                    scale: interpolate(
+                        scrollOffset.value,
+                        [-IMG_HEIGHT, 0, IMG_HEIGHT],
+                        [2, 1, 1]
+                    )
+                }
+            ]
+        }
+    });
+    
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Videos</Text>
-            <StatusBar style="auto" />
+            <Animated.ScrollView ref={scrollRef} scrollEventThrottle={16} >
+                <Animated.Image
+                    source={{
+                        uri: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302'
+                    }}
+                    style={[styles.image, imageAnimatedStyle]}
+                />
+                <View style={{ height: 2000, backgroundColor: '#fff' }}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', textAlign: 'center', marginTop: 20 }}>
+                        Parallax Scroll
+                    </Text>
+                </View>
+            </Animated.ScrollView>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#181A11',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    title: {
-        color: "#fff",
-        fontWeight: "bold",
-        fontSize: 50,
-        marginBottom: 40
-    },
+	container: {
+		flex: 1,
+		backgroundColor: '#181A11'
+	},
+	image: {
+		width,
+		height: IMG_HEIGHT
+	}
 });

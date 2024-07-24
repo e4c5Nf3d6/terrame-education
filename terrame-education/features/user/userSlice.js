@@ -12,7 +12,7 @@ const initialState = {
 export const login = createAsyncThunk(
     "user/login", 
     async (values) => {
-        const response = await axios.post("https://6288-99-176-5-175.ngrok-free.app/login", values);
+        const response = await axios.post("https://a925-99-176-5-175.ngrok-free.app/login", values);
         await SecureStore.setItemAsync("userToken", response.data.token)
         return response.data;
     }
